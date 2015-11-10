@@ -1,0 +1,107 @@
+<ion-view title="<div><i class='icon ion-chatbubble user-messages-top-icon'></i> {{line.id}}</div>"
+          class="show" >
+
+	<ion-nav-buttons side="secondary" >
+		<button class="button button-clear"
+		        ng-click="user.toggleFavorite(show)" >
+			<i class="ion-heart"
+			   ng-class="{'assertive':user.current.favorites[line.id]}" ></i >
+		</button >
+	</ion-nav-buttons >
+
+	<ion-content delegate-handle="show-page" >
+
+		<!-- Loading Indicator -->
+		<div class="loading"
+		     ng-if="data.loading" >
+			<ion-spinner icon="ripple" ></ion-spinner >
+			<p >Loading params...</p >
+		</div >
+
+		<!-- Empty room message -->
+		<div class="loading"
+		     ng-show="!data.loading && data.params.length == 0" >
+			<p >There is no parameters for line!</p >
+		</div >
+
+		<!-- Discussion list -->
+		<!--<ol class="discussion" >
+			<li class="" ng-repeat="param in data.params" >
+				<div class="messages" >
+					<p >{{param.nazwa}}</p >
+					<time >{{param.system}} •</time >
+				</div >
+			</li >
+		</ol >-->
+
+    <div class="list card">
+
+      <div class="item podstawa">
+        <a href="#" class="item item-icon-left" style="background: lightgreen">
+          <i class="icon ion-log-in"></i>
+          <b>{{data.params[0].linie[0].opis}}</b>
+        </a>
+        <div class="row">
+          <span class="col col-40">
+            {{data.params[0].linie[0].terma}}
+          </span>
+          <span class="col col-10 text-center positive">
+            --->
+          </span>
+          <span class="col col-50 text-right">
+            {{data.params[0].linie[0].termb}}
+        </span>
+        </div>
+      </div>
+
+      <div class="item rezerwa">
+        <a href="#" class="item item-icon-left" style="background: lightpink">
+          <i class="icon ion-log-in"></i>
+          <b>{{data.params[0].linie[1].opis}}</b>
+        </a>
+        <div class="row">
+        <span class="col col-40">
+          {{data.params[0].linie[1].terma}}
+        </span>
+          <span class="col col-10 text-center assertive">
+            --->
+          </span>
+          <span class="col col-50 text-right">
+            {{data.params[0].linie[1].termb}}
+        </span>
+        </div>
+      </div>
+
+      <div class="item wanbb" ng-if="data.params[0].linie[2]">
+        <a href="#" class="item item-icon-left" style="background: lightgoldenrodyellow">
+          <i class="icon ion-log-in"></i>
+          <b>{{data.params[0].linie[2].opis}}</b>
+        </a>
+        <div class="row">
+        <span class="col col-40">
+          {{data.params[0].linie[2].iec[0].adres}}
+        </span>
+          <span class="col col-10 text-center assertive">
+            --->
+          </span>
+          <span class="col col-50 text-right">
+            {{data.params[0].linie[2].iec[1].adres}}
+        </span>
+        </div>
+      </div>
+
+      <div class="item">
+      <a href="#" class="item item-icon-left">
+        <i class="icon ion-upload"></i>
+        RTU: {{data.params[0].linie[0].adresrtu[0].adres}}, port: {{data.params[0].linie[0].adresrtu[0].port}}, speed: {{data.params[0].linie[0].adresrtu[0].pred}}
+      </a>
+      </div>
+      <button class="button button-full button-energized" ng-click="showSsin(line.id)">
+        Show SSiN parameters
+      </button>
+
+    </div>
+
+	</ion-content >
+
+</ion-view >

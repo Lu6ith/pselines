@@ -1,0 +1,45 @@
+<ion-view title="Find Lines"
+          class="search" >
+	<ion-content >
+
+		<!-- Search Input Control -->
+		<div class="bar bar-header item-input-inset" >
+			<label class="item-input-wrapper" >
+				<i class="icon ion-ios-search placeholder-icon" ></i >
+				<input type="search"
+				       ng-model="search.line"
+				       placeholder="Search" >
+			</label >
+		</div >
+
+		<!-- Show List -->
+		<ion-list >
+			<!--<ion-item ng-repeat="line in filteredLines = (showLinesService.lines | filter:search )"-->
+      <ion-item ng-repeat="line in filteredLines = (showLinesService.lines | filter:search.line)"
+			          ui-sref="app.showline({'lineId':line.id})"
+                class="item-icon-left" >
+        <i class="icon ion-ios-world"></i>
+				<h2 >{{line.id}}</h2 >
+
+				<p class="" >
+					<i class="ion-ios-location-outline" ></i >
+					&nbsp;{{line.nazwa}}  <span class="text-right calm item-note">{{line.typ  | uppercase}}</span>
+				</p >
+
+				<span ng-show="user.current.favorites[line.id]" >
+					<i class="ion-heart assertive" ></i >
+				</span >
+
+			</ion-item >
+
+			<!-- No Results Found Message -->
+			<div ng-show="filteredLines.length == 0" >
+				<p class="text-center" >No results found for search '{{search.line}}'</p >
+			</div >
+
+
+		</ion-list >
+
+
+	</ion-content >
+</ion-view >
