@@ -6,7 +6,7 @@ mod.controller('MenuCtrl', function($scope, $state, UserService) {
 
 	$scope.logout = function () {
 		UserService.logoutUser();
-		$state.go('intro');
+		$state.go('login');
 	};
 
 });

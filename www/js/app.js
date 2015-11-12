@@ -1,7 +1,9 @@
 var app = angular.module('pselines', [
 	'ionic',
+  'ngStorage',
 	'ngCordova',
 	'firebase',
+  'ngMessages',
 	'angularMoment',
 	'pselines.controllers',
 	'pselines.services',
@@ -39,11 +41,11 @@ app.config(function ($stateProvider, $urlRouterProvider, FACEBOOK_APP_ID) {
 app.config(function ($stateProvider, $urlRouterProvider) {
 
 		$stateProvider
-			.state('intro', {
+			/*.state('intro', {
 				url: '/',
 				templateUrl: 'templates/intro.html',
 				controller: 'IntroCtrl'
-			})
+			})*/
 
 			.state('app', {
 				url: "/app",
@@ -72,9 +74,27 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 					}
 				}
 			})
+
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login/login.html',
+        controller:'loginController'
+      })
+
+      .state('forgot', {
+        url: '/forgot',
+        templateUrl: 'views/forgot/forgot.html',
+        controller:'forgotController'
+      })
+
+      .state('register', {
+        url: '/register',
+        templateUrl: 'views/register/register.html',
+        controller:'registerController'
+      })
 		;
 
 		// if none of the above states are matched, use this as the fallback
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/login');
 
 	});
